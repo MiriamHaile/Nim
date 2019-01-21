@@ -8,19 +8,30 @@ public class Main {
         Sticks sticks = new Sticks(21);
         int input;
 
-        while (!(sticks.getSticks() == 0)) {
+        do {
 
             System.out.print("Amount of sticks left: " + sticks.getSticks());
-            System.out.print("\nChoose how many sticks you want to take: ");
+            System.out.print("\nPlayer1, choose how many sticks you want to take: ");
             input = scanner.nextInt();
+            sticks.setSticks(sticks.getSticks() - input);
+            if (sticks.getSticks() == 0) {
+                System.out.println("We are out of sticks, player1 wins!");
+                System.exit(0);
+            }
+            System.out.print("Amount of sticks left: " + sticks.getSticks());
+            System.out.print("\nPlayer2, choose how many sticks you want to take: ");
+            input = scanner.nextInt();
+            sticks.setSticks(sticks.getSticks() - input);
 
-            sticks.getSticks() - input;
-        }
+            if (sticks.getSticks() == 0) {
+                System.out.println("We are out of sticks, player2 wins!");
+                System.exit(0);
+            }
 
-
-
-
-
+        } while (sticks.getSticks() >= 0);
     }
 
+
 }
+
+
